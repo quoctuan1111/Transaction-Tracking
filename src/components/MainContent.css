@@ -1,0 +1,9 @@
+.content{
+    text-align: center;
+    padding: 70px;
+}
+ 
+.dark .content{
+    color: #fff;
+}
+
