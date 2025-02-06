@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import "./NavBar.css"
 import logo_light from "../assets/logo-black.png"
 import logo_dark from "../assets/logo-white.png"
