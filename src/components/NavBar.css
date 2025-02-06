@@ -31,7 +31,7 @@
 .search-box{
     display: flex;
     align-items: center;
-    background: #242424;
+    background: #000000;
     padding: 10px 20px;
     border-radius: 50px;
     width: 300px;
