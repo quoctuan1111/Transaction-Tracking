@@ -9,9 +9,10 @@ const MainContent = () =>{
             <div className="search-trans">
                 <input type="text" placeholder="Search Transactions"/>
 
-            </div>      
-
+            </div>     
         </div>
+
+        
       
     )
 }
