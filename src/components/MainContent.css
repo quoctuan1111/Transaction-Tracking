@@ -1,17 +1,21 @@
-.content {
+.main-container {
     flex: 1 0 auto;
-    text-align: center;
+    width: 100%;
     padding: 40px 20px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
 }
 
-.content h1 {
+.search-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.search-section h1 {
     color: #fff;
-    margin: 0;
+    margin-bottom: 30px;
 }
 
 .search-trans {
@@ -23,7 +27,7 @@
     width: 600px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    margin: 40px auto;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -120,6 +124,51 @@
     cursor: pointer;
 }
 
+/* Latest sections styles */
+.latest-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 60px;
+    padding: 0 20px;
+}
+
+.latest-section {
+    flex: 1;
+}
+
+.latest-section h2 {
+    color: #222;
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.latest-box {
+    background: #2a2a2a;
+    border-radius: 16px;
+    height: 300px;
+    width: 100%;
+}
+
+.placeholder-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+/* Dark mode styles */
+.dark .latest-section h2 {
+    color: #fff;
+}
+
+.dark .latest-box {
+    background: #e0e0e0;
+}
+
 /* Dark mode styles */
 .dark .search-trans {
     background: #fff;
@@ -153,6 +202,22 @@
     color: #222;
 }
 
+.dark .latest-box {
+    background: #fff;
+}
+
+.dark .latest-box h2 {
+    color: #222;
+}
+
+.dark .latest-content {
+    background: #f5f5f5;
+}
+
+.dark .placeholder-content {
+    background: rgba(0, 0, 0, 0.05);
+}
+
 .search-trans input::placeholder {
     color: rgba(255, 255, 255, 0.53);
 }
@@ -163,6 +228,10 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
+    .main-container {
+        padding: 30px 16px;
+    }
+
     .search-trans {
         width: 90%;
         max-width: 500px;
@@ -174,5 +243,21 @@
     
     .search-divider {
         margin: 0 8px;
+    }
+
+    .latest-sections {
+        flex-direction: column;
+    }
+
+    .latest-box {
+        width: 100%;
+    }
+
+    .latest-content {
+        min-height: 250px;
+    }
+
+    .placeholder-content {
+        min-height: 218px;
     }
 }

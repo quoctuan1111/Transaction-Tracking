@@ -1,7 +1,7 @@
 footer {
-    flex-shrink: 0; /* Prevent footer from shrinking */
+    flex-shrink: 0;
     width: 100%;
-    padding: 5px 0;
+    padding: clamp(10px, 1vw, 20px) 0;
     background-color: #f8f9fa;
     color: #333;
     text-align: center;
@@ -11,14 +11,14 @@ footer {
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(10px, 4vw, 20px);
 }
 
 .footer-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 8px;
+    gap: clamp(12px, 3vw, 20px);
+    margin-bottom: clamp(6px, 2vw, 8px);
     padding: 0;
     list-style: none;
 }
@@ -26,16 +26,12 @@ footer {
 .footer-icons li a {
     color: #007bff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     transition: color 0.3s ease;
 }
 
-.footer-icons li a:hover {
-    color: #0056b3;
-}
-
 .footer-text {
-    font-size: 12px;
+    font-size: clamp(0.7rem, 1.5vw, 0.875rem);
     line-height: 1.5;
 }
 
@@ -47,22 +43,16 @@ footer {
 .footer-links {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: clamp(4px, 2vw, 8px);
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .footer-links a {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #0056b3;
-}
-
-.divider {
-    color: #666;
+    white-space: nowrap;
 }
 
 /* Dark Mode */
@@ -76,34 +66,20 @@ footer {
     color: #0300af;
 }
 
-.dark .footer-icons a:hover,
-.dark .footer-links a:hover {
-    color: #4744f8;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
-    footer {
-        padding: 10px 0;
+    .footer-content {
+        padding: 0 16px;
     }
     
     .footer-icons {
-        gap: 15px;
-        margin-bottom: 6px;
-    }
-
-    .footer-text {
-        font-size: 11px;
+        gap: 12px;
     }
 }
 
 @media (max-width: 480px) {
     .footer-content {
-        padding: 0 10px;
-    }
-    
-    .footer-icons {
-        gap: 12px;
+        padding: 0 12px;
     }
 
     .footer-links {
@@ -113,5 +89,12 @@ footer {
 
     .divider {
         display: none;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+    .footer-icons {
+        gap: 8px;
     }
 }

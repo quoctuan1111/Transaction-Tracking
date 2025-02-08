@@ -3,10 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 2%;
+    padding: 10px 4%;
     background: #fff;
     transition: 0.5s;
-    box-shadow: 0px 0px 60px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dark .navbar {
@@ -14,14 +14,16 @@
     color: #fff;
 }
 
-.nav-title{
-    color: rgb(78, 76, 76);
-}
-
 .nav-left {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+.nav-title {
+    color: rgb(78, 76, 76);
+    font-size: 1.2rem;
+    white-space: nowrap;
 }
 
 .nav-right {
@@ -32,12 +34,14 @@
 
 .logo {
     width: 40px;
+    height: 40px;
     cursor: pointer;
     opacity: 0.7;
 }
 
 .toggle-icon {
-    width: 40px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
 }
 
@@ -45,9 +49,10 @@
     display: flex;
     align-items: center;
     background: #000000;
-    padding: 5px 20px;
+    padding: 8px 16px;
     border-radius: 50px;
     width: 300px;
+    transition: all 0.3s ease;
 }
 
 .dark .search-box {
@@ -60,7 +65,7 @@
     border: 0;
     outline: 0;
     color: #fff;
-    font-size: 18px;
+    font-size: 1rem;
     width: 100%;
 }
 
@@ -69,13 +74,11 @@
 }
 
 .search-box input::placeholder {
-    color: #fff;
     color: rgba(255, 255, 255, 0.53);
 }
 
 .dark .search-box input::placeholder {
-    color: #222;
-    color: rgba(0, 0, 0, 0.43);
+    color: rgba(0, 0, 0, 0.42);
 }
 
 .search-box img {
@@ -83,26 +86,59 @@
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
     .search-box {
-        width: 200px;
-    }
-    
-    .nav-title {
-        font-size: 1.1rem;
+        width: 250px;
     }
 }
 
-@media (max-width: 576px) {
-    .search-box {
-        width: 150px;
+@media (max-width: 768px) {
+    .navbar {
+        padding: 8px 16px;
     }
-    
+
     .nav-title {
         font-size: 1rem;
     }
-    
+
+    .search-box {
+        width: 200px;
+        padding: 6px 12px;
+    }
+
+    .logo {
+        width: 32px;
+        height: 32px;
+    }
+
     .toggle-icon {
-        width: 40px;
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-title {
+        display: none;
+    }
+
+    .search-box {
+        width: 150px;
+    }
+
+    .nav-right {
+        gap: 12px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+    .search-box {
+        width: 120px;
+    }
+
+    .navbar {
+        padding: 8px;
     }
 }
