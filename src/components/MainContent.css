@@ -1,4 +1,4 @@
-.content{
+.content {
     flex: 1 0 auto;
     text-align: center;
     padding: 40px 20px;
@@ -7,58 +7,98 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    
 }
 
 .content h1 {
     color: #fff;
-    margin: 0; /* Remove default margin */
+    margin: 0;
 }
 
 .search-trans {
     display: flex;
     align-items: center;
     background-color: #000000;
-    padding: 12px 25px;
+    padding: 8px 20px;
     border-radius: 50px;
-    width: 450px;
+    width: 600px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 40px auto;
     position: relative;
-    
-    margin: 40px auto; /* Centers it horizontally */
+}
+
+.dropdown {
+    position: relative;
+    min-width: 120px;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.search-divider {
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 12px;
+}
+
+.arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.up {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    list-style: none;
+    padding: 8px 0;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #fff;
+    text-align: left;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu li.selected {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .search-trans input {
     border: none;
     background-color: transparent;
     outline: none;
-    color: #131111;
-    font-size: 16px;
-    padding: 0 10px;
-    width: 100%;
-}
-
-.dark .content{
     color: #fff;
-}
-
-.dark .search-trans{
-    background: #fff;
-}
-
-.dark .search-trans input {
-    color: #222;
-}
-
-.search-trans input::placeholder {
-    color: #fff;
-    color: rgba(250, 250, 250, 0.53);
-}
-
-.dark .search-trans input::placeholder {
-    color: #222;
-    color: rgba(0, 0, 0, 0.42);
+    font-size: 14px;
+    padding: 0;
+    flex: 1;
 }
 
 .search-trans img {
@@ -66,13 +106,59 @@
     cursor: pointer;
 }
 
+/* Dark mode styles */
+.dark .search-trans {
+    background: #fff;
+}
+
+.dark .dropdown-toggle {
+    color: #222;
+}
+
+.dark .search-divider {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .dropdown-menu {
+    background-color: #fff;
+}
+
+.dark .dropdown-menu li {
+    color: #222;
+}
+
+.dark .dropdown-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark .dropdown-menu li.selected {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .search-trans input {
+    color: #222;
+}
+
+.search-trans input::placeholder {
+    color: rgba(255, 255, 255, 0.53);
+}
+
+.dark .search-trans input::placeholder {
+    color: rgba(0, 0, 0, 0.42);
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
     .search-trans {
         width: 90%;
-        max-width: 400px;
+        max-width: 500px;
     }
     
-    .content {
-        padding: 30px 15px;
+    .dropdown-toggle {
+        padding: 8px;
+    }
+    
+    .search-divider {
+        margin: 0 8px;
     }
 }
