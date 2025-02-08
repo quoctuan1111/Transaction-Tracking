@@ -40,8 +40,22 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
     font-size: 14px;
+    min-width: 140px;
+}
+
+.crypto-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.crypto-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 .search-divider {
