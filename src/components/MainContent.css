@@ -1,8 +1,18 @@
 .content{
+    flex: 1 0 auto;
     text-align: center;
-    padding: 70px;
-    margin: 0 auto; /* Centers it horizontally */
+    padding: 40px 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
     
+}
+
+.content h1 {
+    color: #fff;
+    margin: 0; /* Remove default margin */
 }
 
 .search-trans {
@@ -54,3 +64,13 @@
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    .search-trans {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .content {
+        padding: 30px 15px;
+    }
+}
