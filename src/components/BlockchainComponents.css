@@ -5,8 +5,6 @@
     transition: background-color 0.2s;
 }
 
-
-
 .block-content {
     display: flex;
     justify-content: space-between;
@@ -19,18 +17,19 @@
     color: #2563eb;
 }
 
+
 .dark .block-number {
     color: #60a5fa;
 }
 
 .block-timestamp {
     font-size: 0.75rem;
-    color: #6b7280;
+    color:rgb(255, 255, 255);
     margin-top: 0.25rem;
 }
 
 .dark .block-timestamp {
-    color: #9ca3af;
+    color:rgb(0, 0, 0);
 }
 
 .block-stats {
@@ -39,24 +38,35 @@
 
 .block-transactions {
     font-size: 0.875rem;
+    color: white;
+}
+
+.dark .block-transactions {
+    font-size: 0.875rem;
+    color: black;
 }
 
 .block-size {
     font-size: 0.75rem;
-    color: #6b7280;
+    color:rgb(255, 255, 255);
+}
+
+.block-size {
+    font-size: 0.75rem;
+    color:rgb(0, 0, 0);
 }
 
 .block-miner {
     text-align: right;
     font-size: 0.75rem;
-    color: #4b5563;
+    color:rgb(255, 255, 255);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
 .dark .block-miner {
-    color: #d1d5db;
+    color:rgb(0, 0, 0);
 }
 
 /* Transaction styles */
@@ -98,11 +108,11 @@
 
 .address-label {
     font-size: 0.75rem;
-    color: #6b7280;
+    color:rgb(255, 255, 255);
 }
 
 .dark .address-label {
-    color: #9ca3af;
+    color:rgb(0, 0, 0);
 }
 
 .address {
@@ -110,6 +120,15 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    color: white;
+}
+
+.dark .address {
+    font-size: 0.75rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: black;
 }
 
 .transaction-details {
@@ -121,14 +140,20 @@
 
 .transaction-value {
     font-weight: 500;
+    color: white;
+}
+
+.dark .transaction-value {
+    font-weight: 500;
+    color: black;
 }
 
 .transaction-fee {
-    color: #6b7280;
+    color:rgb(255, 255, 255);
 }
 
 .dark .transaction-fee {
-    color: #9ca3af;
+    color:rgb(0, 0, 0);
 }
 
 /* Scrollable container styles */
