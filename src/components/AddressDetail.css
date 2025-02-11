@@ -67,13 +67,15 @@
     word-break: break-all;
     margin-bottom: 1rem;
   }
-  .address{
+  
+  .address_trans{
     color: black;
   }
 
-  .dark .address{
+  .dark .address_trans{
     color: white;
   }
+
   .address-dates {
     display: flex;
     flex-direction: column;

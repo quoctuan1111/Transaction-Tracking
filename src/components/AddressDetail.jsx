@@ -216,11 +216,11 @@ const AddressDetail = ({ theme }) => {
                             <div className="tx-addresses">
                                 <div className="address-pair">
                                     <span className="label">From:</span>
-                                    <span className="address">{tx.sender}</span>
+                                    <span className="address_trans">{tx.sender}</span>
                                 </div>
                                 <div className="address-pair">
                                     <span className="label">To:</span>
-                                    <span className="address">{tx.receiver}</span>
+                                    <span className="address_trans">{tx.receiver}</span>
                                 </div>
                             </div>
                             <div className="tx-amount">
