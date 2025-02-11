@@ -160,7 +160,7 @@ const MainContent = ({ theme }) => {
 
             <div className="latest-sections">
                 <div className="latest-section">
-                    <h2>LATEST {selectedCrypto} Blocks</h2>
+                    <h2>LATEST {selectedCrypto} BLOCKS</h2>
                     <div className="latest-box">
                         <div className="scrollable-container">
                             {blocks.map((block) => (
@@ -171,7 +171,7 @@ const MainContent = ({ theme }) => {
                 </div>
 
                 <div className="latest-section">
-                    <h2>LATEST {selectedCrypto} Transactions</h2>
+                    <h2>LATEST {selectedCrypto} TRANSACTIONS</h2>
                     <div className="latest-box">
                         <div className="scrollable-container">
                             {transactions.map((transaction) => (

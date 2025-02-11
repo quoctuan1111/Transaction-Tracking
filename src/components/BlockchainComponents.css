@@ -51,7 +51,7 @@
     color:rgb(255, 255, 255);
 }
 
-.block-size {
+.dark .block-size {
     font-size: 0.75rem;
     color:rgb(0, 0, 0);
 }
