@@ -24,7 +24,7 @@ footer {
 }
 
 .footer-icons li a {
-    color: #007bff;
+    color: #222;
     text-decoration: none;
     font-size: clamp(0.8rem, 2vw, 1rem);
     transition: color 0.3s ease;
@@ -49,7 +49,7 @@ footer {
 }
 
 .footer-links a {
-    color: #007bff;
+    color: #222;
     text-decoration: none;
     transition: color 0.3s ease;
     white-space: nowrap;
@@ -63,7 +63,7 @@ footer {
 
 .dark .footer-icons a,
 .dark .footer-links a {
-    color: #0300af;
+    color: #fff;
 }
 
 /* Responsive Design */
