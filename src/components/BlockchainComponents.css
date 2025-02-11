@@ -1,0 +1,161 @@
+/* Block styles */
+.block-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(229, 231, 235);
+    transition: background-color 0.2s;
+}
+
+
+
+.block-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.block-number {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #2563eb;
+}
+
+.dark .block-number {
+    color: #60a5fa;
+}
+
+.block-timestamp {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.dark .block-timestamp {
+    color: #9ca3af;
+}
+
+.block-stats {
+    text-align: right;
+}
+
+.block-transactions {
+    font-size: 0.875rem;
+}
+
+.block-size {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.block-miner {
+    text-align: right;
+    font-size: 0.75rem;
+    color: #4b5563;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.dark .block-miner {
+    color: #d1d5db;
+}
+
+/* Transaction styles */
+.transaction-item {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(229, 231, 235);
+    transition: background-color 0.2s;
+}
+
+
+
+.transaction-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.transaction-hash {
+    font-size: 0.75rem;
+    color: #2563eb;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.dark .transaction-hash {
+    color: #60a5fa;
+}
+
+.transaction-addresses {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.address-container {
+    flex: 1;
+}
+
+.address-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.dark .address-label {
+    color: #9ca3af;
+}
+
+.address {
+    font-size: 0.75rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.transaction-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.transaction-value {
+    font-weight: 500;
+}
+
+.transaction-fee {
+    color: #6b7280;
+}
+
+.dark .transaction-fee {
+    color: #9ca3af;
+}
+
+/* Scrollable container styles */
+.scrollable-container {
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .block-content,
+    .transaction-addresses {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .block-stats,
+    .block-miner {
+        text-align: left;
+    }
+
+    .address-container {
+        width: 100%;
+    }
+
+    .address-container:last-child {
+        text-align: left;
+    }
+}
