@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./MainContent.css";
 import "./BlockchainComponents.css";
 import search_icon_light from "../assets/search-w.png";
@@ -30,27 +31,39 @@ const Block = ({ number, timestamp, transactions, size, miner }) => (
     </div>
 );
 
-const Transaction = ({ hash, from, to, value, fee }) => (
-    <div className="transaction-item">
-        <div className="transaction-content">
-            <div className="transaction-hash">{hash}</div>
-            <div className="transaction-addresses">
-                <div className="address-container">
-                    <div className="address-label">From</div>
-                    <div className="address">{from}</div>
+const Transaction = ({ hash, from, to, value, fee }) => {
+    const navigate = useNavigate();
+    
+    const handleAddressClick = (address) => {
+        navigate(`/address/${address}`);
+    };
+
+    return (
+        <div className="transaction-item">
+            <div className="transaction-content">
+                <div className="transaction-hash" onClick={() => handleAddressClick(hash)}>{hash}</div>
+                <div className="transaction-addresses">
+                    <div className="address-container">
+                        <div className="address-label">From</div>
+                        <div className="address">
+                            {from}
+                        </div>
+                    </div>
+                    <div className="address-container">
+                        <div className="address-label">To</div>
+                        <div className="address">
+                            {to}
+                        </div>
+                    </div>
                 </div>
-                <div className="address-container">
-                    <div className="address-label">To</div>
-                    <div className="address">{to}</div>
+                <div className="transaction-details">
+                    <span className="transaction-value">{value} BTC</span>
+                    <span className="transaction-fee">{fee} BTC</span>
                 </div>
-            </div>
-            <div className="transaction-details">
-                <span className="transaction-value">{value} BTC</span>
-                <span className="transaction-fee">{fee} BTC</span>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 const MainContent = ({ theme }) => {
     const [isOpen, setIsOpen] = useState(false);

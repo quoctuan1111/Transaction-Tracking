@@ -6,10 +6,20 @@ import search_icon_light from "../assets/search-w.png"
 import search_icon_dark from "../assets/search-b.png"
 import toggle_light from "../assets/night.png"
 import toggle_dark from "../assets/day.png"
-const NavBar = ({theme, setTheme}) => {
+import MainContent from "./MainContent"
+import { useNavigate } from "react-router-dom";
+
+const NavBar = ({theme, setTheme}) => { 
     const toggle_mode = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     }
+
+    const navigate = useNavigate();
+
+    const handleLogoClick = () => {
+        navigate('/');
+    }
+
 
     return (
         <nav className="navbar">
@@ -18,6 +28,7 @@ const NavBar = ({theme, setTheme}) => {
                     src={theme === 'light' ? logo_light : logo_dark} 
                     alt="Logo" 
                     className="logo" 
+                    onClick={() => handleLogoClick(MainContent)}
                 />
                 <h1 className="nav-title">Transaction Tracking</h1>
             </div>
