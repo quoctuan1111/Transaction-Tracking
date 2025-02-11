@@ -14,11 +14,6 @@ const Footer = () => {
                 </ul>
                 <div className="footer-text">
                     <span className="copyright">© 2025 ABCXYZ. All Rights Reserved.</span>
-                    <div className="footer-links">
-                        <a href="#">Privacy Policy</a>
-                        <span className="divider">|</span>
-                        <a href="#">Terms of Service</a>
-                    </div>
                 </div>
             </div>
         </footer>

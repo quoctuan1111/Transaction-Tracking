@@ -31,7 +31,7 @@ const AddressDetail = ({ theme }) => {
           <div className="stat-header">
             <h2>Address <span className="currency-label">Bitcoin</span></h2>
             <div className="address-value">
-              0xc7317c5c4291e51e500d907ead70b713dc739a ⭐
+              0xc7317c5c4291e51e500d907ead70b713dc739a <span className="copy-icon">📄</span>
             </div>
             <div className="address-dates">
               <div>
