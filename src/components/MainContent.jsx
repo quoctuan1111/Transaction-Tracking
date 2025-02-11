@@ -10,7 +10,7 @@ import doge_dark from "../assets/doge-black.png";
 import btc_light from "../assets/btc.png";
 import eth_light from "../assets/eth.png";
 import ltc_light from "../assets/ltc.png";
-import doge_light from "../assets/doge.png"
+import doge_light from "../assets/doge.png";
 
 const Block = ({ number, timestamp, transactions, size, miner }) => (
     <div className="block-item">
