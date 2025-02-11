@@ -3,13 +3,50 @@ import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import "./AddressDetail.css";
 
 const AddressDetail = ({ theme }) => {
-  // Sample data for the transaction count chart
   const transactionData = [
     { month: 'Oct', received: 1, sent: 0 },
     { month: 'Nov', received: 0, sent: 1 },
     { month: 'Feb', received: 1, sent: 0 },
     { month: 'Apr', received: 0, sent: 1 },
-    { month: 'Oct', received: 0, sent: 1 },
+    { month: 'Oct', received: 0, sent: 1 }
+  ];
+
+  const transactions = [
+    {
+      sender: '0xc7317c...3cbc739a',
+      receiver: '0x1ef75d...f487b02c',
+      amount: '0.00107 ETH',
+      usdValue: '≈ $2.31 USD',
+      time: '10:45am 09/10/2024'
+    },
+    {
+      sender: '0xc7317c...3cbc739a',
+      receiver: '0x0c45dd...599afb8',
+      amount: '0 ETH',
+      usdValue: '≈ $0 USD',
+      time: '10:02am 20/04/2023'
+    },
+    {
+      sender: '0xc7317c...3cbc739a',
+      receiver: '0x0c45dd...599afb8',
+      amount: '0 ETH',
+      usdValue: '≈ $0 USD',
+      time: '07:46am 06/02/2023'
+    },
+    {
+      sender: '0xc7317c...3cbc739a',
+      receiver: '0xb0606f...d84445cd',
+      amount: '0.0001 ETH',
+      usdValue: '≈ $0.23 USD',
+      time: '03:24pm 02/11/2022'
+    },
+    {
+      sender: '0xc7317c...3cbc739a',
+      receiver: '0x0c45dd...599afb8',
+      amount: '0 ETH',
+      usdValue: '≈ $0 USD',
+      time: '09:39am 09/10/2022'
+    }
   ];
 
   return (
@@ -89,6 +126,92 @@ const AddressDetail = ({ theme }) => {
             <Bar dataKey="sent" fill="#e74c3c" />
           </BarChart>
         </ResponsiveContainer>
+      </div>
+
+      <div className="interactions-section">
+        <h2>Top Interactions</h2>
+        <div className="interactions-grid">
+          <div className="sender-section">
+            <div className="interaction-header">
+              <span>Sender</span>
+              <span>Transactions</span>
+              <span>Percentages</span>
+            </div>
+            <div className="interaction-row">
+              <span>0x37....50f</span>
+              <span>1</span>
+              <div className="percentage-container sender">
+                <div className="percentage-bar" style={{ width: '50%' }}></div>
+                <span>50%</span>
+              </div>
+            </div>
+            <div className="interaction-row">
+              <span>0x37....51f</span>
+              <span>1</span>
+              <div className="percentage-container sender">
+                <div className="percentage-bar" style={{ width: '50%' }}></div>
+                <span>50%</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="receiver-section">
+            <div className="interaction-header">
+              <span>Receiver</span>
+              <span>Transactions</span>
+              <span>Percentages</span>
+            </div>
+            <div className="interaction-row">
+              <span>0x23....78f</span>
+              <span>1</span>
+              <div className="percentage-container receiver">
+                <div className="percentage-bar" style={{ width: '33.3%' }}></div>
+                <span>33.3%</span>
+              </div>
+            </div>
+            <div className="interaction-row">
+              <span>0x63....28f</span>
+              <span>1</span>
+              <div className="percentage-container receiver">
+                <div className="percentage-bar" style={{ width: '33.3%' }}></div>
+                <span>33.3%</span>
+              </div>
+            </div>
+            <div className="interaction-row">
+              <span>0x22....97f</span>
+              <span>1</span>
+              <div className="percentage-container receiver">
+                <div className="percentage-bar" style={{ width: '33.3%' }}></div>
+                <span>33.3%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="transactions-section">
+        <h2>Transactions</h2>
+        <div className="transactions-table">
+          {transactions.map((tx, index) => (
+            <div key={index} className="transaction-row">
+              <div className="tx-addresses">
+                <div className="address-pair">
+                  <span className="label">From:</span>
+                  <span className="address">{tx.sender}</span>
+                </div>
+                <div className="address-pair">
+                  <span className="label">To:</span>
+                  <span className="address">{tx.receiver}</span>
+                </div>
+              </div>
+              <div className="tx-amount">
+                <div>{tx.amount}</div>
+                <div className="usd-value">{tx.usdValue}</div>
+              </div>
+              <div className="tx-time">{tx.time}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

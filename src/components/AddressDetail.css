@@ -18,8 +18,15 @@
     margin-bottom: 2rem;
   }
   
-  .stat-card {
+  .dark .stat-card {
     background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .stat-card {
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     padding: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -60,7 +67,13 @@
     word-break: break-all;
     margin-bottom: 1rem;
   }
-  
+  .address{
+    color: black;
+  }
+
+  .dark .address{
+    color: white;
+  }
   .address-dates {
     display: flex;
     flex-direction: column;
@@ -107,6 +120,13 @@
   }
   
   .transaction-chart {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .transaction-chart {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 1.5rem;
@@ -142,4 +162,173 @@
       align-items: center;
       gap: 1rem;
     }
+  }
+
+
+  /* New styles for interactions section */
+ .interactions-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .dark  .interactions-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .interactions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .interaction-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.5rem 0;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  .interaction-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .percentage-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .percentage-bar {
+    height: 24px;
+    border-radius: 4px;
+  }
+  
+  .sender .percentage-bar {
+    background-color: #4CAF50;
+  }
+  
+  .receiver .percentage-bar {
+    background-color: #E91E63;
+  }
+  
+  /* New styles for transactions section */
+  .transactions-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+  }
+
+  .dark .transactions-section {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .transactions-table {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  }
+  
+  .transaction-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .transaction-row:last-child {
+    border-bottom: none;
+  }
+  
+  .tx-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .address-pair {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .label {
+    color: black;
+  }
+
+  .dark .label{
+    color: white;
+  }
+  
+  .tx-amount {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .usd-value {
+    font-size: 0.8rem;
+    color: #888;
+  }
+  
+  .tx-time {
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1024px) {
+    .interactions-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .transaction-row {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 1rem;
+    }
+  
+    .interaction-row {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Dark mode specific styles */
+  .dark .interactions-section,
+  .dark .transactions-section {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .interaction-row,
+  .dark .transactions-table {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .dark .transaction-row {
+    border-color: rgba(255, 255, 255, 0.1);
   }
