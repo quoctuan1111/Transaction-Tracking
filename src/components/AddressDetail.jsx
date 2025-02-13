@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import "./AddressDetail.css";
 import TransactionGraph from './TransactionGraph';
+import TopInteractions from './TopInteraction';
+import { getFullAddressData } from './MockData';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -21,76 +23,21 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const AddressDetail = ({ theme }) => {
-    const { address } = useParams(); // Get address from URL
-    const [addressData, setAddressData] = useState({
-        balance: '0.00000',
-        currency: 'BTC',
-        changePercentage: '0',
-        firstActive: 'N/A',
-        lastActive: 'N/A',
-        sentCount: 0,
-        receivedCount: 0,
-        totalCount: 0,
-        sentAmount: '0.0000',
-        receivedAmount: '0.0000'
-    });
-
-    // Mock transaction data - in a real app, this would come from an API
-    const [transactions, setTransactions] = useState([]);
-    const [transactionData, setTransactionData] = useState([]);
+    const { address } = useParams();
+    const [addressData, setAddressData] = useState(null);
 
     useEffect(() => {
-        // Here you would typically fetch data from your API
-        // For demo purposes, we're using mock data
-        const mockData = {
-            balance: '0.00107',
-            currency: getCurrencyFromAddress(address),
-            changePercentage: '-1.2',
-            firstActive: '2024-01-01',
-            lastActive: '2024-02-13',
-            sentCount: 3,
-            receivedCount: 2,
-            totalCount: 5,
-            sentAmount: '0.0001',
-            receivedAmount: '0.0004'
-        };
-
-        const mockTransactions = [
-            {
-                hash: `${address.substring(0, 8)}...${address.substring(address.length - 8)}`,
-                from: address,
-                to: '0x1ef75d...f487b02c',
-                amount: '0.00107',
-                usdValue: '≈ $2.31 USD',
-                time: '10:45am 13/02/2024'
-            },
-            // Add more mock transactions as needed
-        ];
-
-        const mockTransactionData = [
-            { month: 'Oct', received: 1, sent: 0 },
-            { month: 'Nov', received: 0, sent: 1 },
-            { month: 'Dec', received: 1, sent: 0 },
-            { month: 'Jan', received: 0, sent: 1 },
-            { month: 'Feb', received: 0, sent: 1 }
-        ];
-
-        setAddressData(mockData);
-        setTransactions(mockTransactions);
-        setTransactionData(mockTransactionData);
+        // Load full address data when component mounts or address changes
+        setAddressData(getFullAddressData(address, 'ETHEREUM')); // You can make currency dynamic if needed
     }, [address]);
 
-    // Helper function to determine currency based on address format
-    const getCurrencyFromAddress = (addr) => {
-        if (addr.startsWith('0x')) return 'ETH';
-        if (addr.startsWith('1') || addr.startsWith('3')) return 'BTC';
-        if (addr.startsWith('L')) return 'LTC';
-        if (addr.startsWith('D')) return 'DOGE';
-        return 'BTC'; // Default fallback
-    };
+    if (!addressData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="dashboard-container">
+            {/* Balance Card */}
             <div className="dashboard-stats">
                 <div className="stat-card">
                     <div className="stat-header">
@@ -104,6 +51,7 @@ const AddressDetail = ({ theme }) => {
                     </div>
                 </div>
 
+                {/* Address Card */}
                 <div className="stat-card">
                     <div className="stat-header">
                         <h2>Address <span className="currency-label">{addressData.currency}</span></h2>
@@ -123,6 +71,7 @@ const AddressDetail = ({ theme }) => {
                     </div>
                 </div>
 
+                {/* Transaction Volume Card */}
                 <div className="stat-card">
                     <div className="stat-header">
                         <h2>Transaction Volume</h2>
@@ -156,12 +105,17 @@ const AddressDetail = ({ theme }) => {
                 </div>
             </div>
 
-            <TransactionGraph theme={theme} address={address} />
+            
+            <TransactionGraph theme={theme} address={address} data={addressData.transactionGraph} />
 
+            
+            
+
+            {/* Transaction Chart */}
             <div className="transaction-chart">
                 <h2>Transaction Count</h2>
                 <ResponsiveContainer width="100%" height={300}>
-                    <BarChart data={transactionData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                    <BarChart data={addressData.transactionHistory} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                         <XAxis dataKey="month" stroke={theme === 'dark' ? '#fff' : '#000'} />
                         <YAxis stroke={theme === 'dark' ? '#fff' : '#000'} />
                         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255, 255, 255, 0.1)' }} />
@@ -171,10 +125,13 @@ const AddressDetail = ({ theme }) => {
                 </ResponsiveContainer>
             </div>
 
+            <TopInteractions interactions={addressData.interactions} />
+
+            {/* Transactions Section */}
             <div className="transactions-section">
                 <h2>Transactions</h2>
                 <div className="transactions-table">
-                    {transactions.map((tx, index) => (
+                    {addressData.transactions.map((tx, index) => (
                         <div key={index} className="transaction-row">
                             <div className="tx-addresses">
                                 <div className="address-pair">
@@ -187,16 +144,14 @@ const AddressDetail = ({ theme }) => {
                                 </div>
                             </div>
                             <div className="tx-amount">
-                                <div>{tx.amount} {addressData.currency}</div>
-                                <div className="usd-value">{tx.usdValue}</div>
+                                <div>{tx.value} {addressData.currency}</div>
+                                <div className="usd-value">≈ ${(tx.value * 2000).toFixed(2)} USD</div>
                             </div>
-                            <div className="tx-time">{tx.time}</div>
+                            <div className="tx-time">{tx.timestamp}</div>
                         </div>
                     ))}
                 </div>
             </div>
-
-            
         </div>
     );
 };
