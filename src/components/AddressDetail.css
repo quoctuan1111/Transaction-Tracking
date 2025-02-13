@@ -356,3 +356,186 @@
     margin: 4px 0;
     opacity: 0.9;
 }
+
+/*Transaction Graph Styles*/
+.transaction-graph {
+  margin: 2rem 0;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .transaction-graph {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.graph-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.graph-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.dark .graph-title {
+  color: #fff;
+}
+
+.graph-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.node:hover {
+  filter: brightness(1.2);
+}
+
+.node-selected circle {
+  stroke:rgb(125, 129, 125);
+  stroke-width: 2px;
+}
+
+.edge {
+  stroke-opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.edge:hover {
+  stroke-opacity: 1;
+}
+
+.node-details {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.details-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.dark .details-title {
+  color: #fff;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.details-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.dark .details-label {
+  color: #999;
+}
+
+.address-list {
+  list-style: none;
+  padding: 0;
+}
+
+.address-item {
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+  color: #000;
+}
+
+.dark .address-item {
+  color: #fff;
+}
+
+.volume-chart {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .details-grid {
+      grid-template-columns: 1fr;
+  }
+  
+  .graph-container {
+      height: 300px;
+  }
+}
+.transaction-graph {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .transaction-graph {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.graph-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.node:hover {
+  filter: brightness(1.2);
+}
+
+.node-selected {
+  stroke: #4CAF50;
+  stroke-width: 2px;
+}
+
+.edge {
+  stroke-opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.edge:hover {
+  stroke-opacity: 1;
+}
+
+.node-label {
+  font-size: 12px;
+  pointer-events: none;
+}
+
+.edge-label {
+  font-size: 10px;
+  pointer-events: none;
+  fill: #666;
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import "./AddressDetail.css";
+import { useNavigate } from 'react-router-dom';
+import TransactionGraph from './TransactionGraph';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -17,7 +19,16 @@ const CustomTooltip = ({ active, payload, label }) => {
     }
     return null;
 };
+
+
 const AddressDetail = ({ theme }) => {
+
+    const navigate = useNavigate();
+
+    const handleAddressClick = (address) => {
+        navigate(`/address/${address}`);
+    };
+
     const transactionData = [
         { month: 'Oct', received: 1, sent: 0 },
         { month: 'Nov', received: 0, sent: 1 },
@@ -147,6 +158,8 @@ const AddressDetail = ({ theme }) => {
                 </ResponsiveContainer>
             </div>
 
+            
+
             <div className="interactions-section">
                 <h2>Top Interactions</h2>
                 <div className="interactions-grid">
@@ -232,6 +245,9 @@ const AddressDetail = ({ theme }) => {
                     ))}
                 </div>
             </div>
+
+            <TransactionGraph theme={theme} address="0xc7317c5c4291e51e500d907ead70b713dc739a" />
+            
         </div>
     );
 };
