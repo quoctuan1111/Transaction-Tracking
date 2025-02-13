@@ -1,0 +1,363 @@
+.search-trans {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    padding: 8px 20px;
+    border-radius: 50px;
+    width: 600px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+    position: relative;
+}
+
+.dark .search-trans {
+    background: #fff;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    min-width: 120px;
+}
+
+.dropdown-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 14px;
+    min-width: 140px;
+}
+
+.dark .dropdown-toggle {
+    color: #222;
+}
+
+.crypto-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.crypto-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.search-divider {
+    width: 1px;
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 12px;
+}
+
+.dark .search-divider {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.arrow.up {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background-color: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    list-style: none;
+    padding: 8px 0;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.dark .dropdown-menu {
+    background-color: #fff;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #fff;
+    text-align: left;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.dark .dropdown-menu li {
+    color: #222;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .dropdown-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu li.selected {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark .dropdown-menu li.selected {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Search input styles */
+.search-trans input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 0;
+    flex: 1;
+}
+
+.dark .search-trans input {
+    color: #222;
+}
+
+.search-trans input::placeholder {
+    color: rgba(255, 255, 255, 0.53);
+}
+
+.dark .search-trans input::placeholder {
+    color: rgba(0, 0, 0, 0.42);
+}
+
+.search-icon {
+    width: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.search-icon:hover {
+    opacity: 0.8;
+}
+
+/* Error message styles */
+.error-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    width: 100%;
+    z-index: 10;
+}
+
+/* Search input container */
+.search-input-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.history-button {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.dark .history-button {
+    color: #000;
+}
+
+.history-button:hover {
+    opacity: 1;
+}
+
+/* Search history */
+.search-history {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 12px;
+    z-index: 1000;
+}
+
+.dark .search-history {
+    background: #fff;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.dark .history-header {
+    color: #000;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.clear-history {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.clear-history:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.dark .history-item {
+    color: #000;
+}
+
+.history-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .history-item:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.history-item-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.crypto-icon-small {
+    width: 16px;
+    height: 16px;
+}
+
+.history-address {
+    font-size: 14px;
+}
+
+.remove-history {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+.history-item:hover .remove-history {
+    opacity: 1;
+}
+
+.remove-history:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #e74c3c;
+}
+
+.dark .remove-history:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Search button */
+.search-button {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.search-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .search-trans {
+        width: 90%;
+        max-width: 500px;
+    }
+    
+    .dropdown-toggle {
+        padding: 8px;
+    }
+    
+    .search-divider {
+        margin: 0 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-trans {
+        padding: 8px 12px;
+    }
+
+    .dropdown-toggle {
+        min-width: 120px;
+    }
+
+    .crypto-icon {
+        width: 16px;
+        height: 16px;
+    }
+}

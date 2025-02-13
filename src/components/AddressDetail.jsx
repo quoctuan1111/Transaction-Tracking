@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 import "./AddressDetail.css";
-import { useNavigate } from 'react-router-dom';
 import TransactionGraph from './TransactionGraph';
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -20,60 +20,74 @@ const CustomTooltip = ({ active, payload, label }) => {
     return null;
 };
 
-
 const AddressDetail = ({ theme }) => {
+    const { address } = useParams(); // Get address from URL
+    const [addressData, setAddressData] = useState({
+        balance: '0.00000',
+        currency: 'BTC',
+        changePercentage: '0',
+        firstActive: 'N/A',
+        lastActive: 'N/A',
+        sentCount: 0,
+        receivedCount: 0,
+        totalCount: 0,
+        sentAmount: '0.0000',
+        receivedAmount: '0.0000'
+    });
 
-    const navigate = useNavigate();
+    // Mock transaction data - in a real app, this would come from an API
+    const [transactions, setTransactions] = useState([]);
+    const [transactionData, setTransactionData] = useState([]);
 
-    const handleAddressClick = (address) => {
-        navigate(`/address/${address}`);
+    useEffect(() => {
+        // Here you would typically fetch data from your API
+        // For demo purposes, we're using mock data
+        const mockData = {
+            balance: '0.00107',
+            currency: getCurrencyFromAddress(address),
+            changePercentage: '-1.2',
+            firstActive: '2024-01-01',
+            lastActive: '2024-02-13',
+            sentCount: 3,
+            receivedCount: 2,
+            totalCount: 5,
+            sentAmount: '0.0001',
+            receivedAmount: '0.0004'
+        };
+
+        const mockTransactions = [
+            {
+                hash: `${address.substring(0, 8)}...${address.substring(address.length - 8)}`,
+                from: address,
+                to: '0x1ef75d...f487b02c',
+                amount: '0.00107',
+                usdValue: '≈ $2.31 USD',
+                time: '10:45am 13/02/2024'
+            },
+            // Add more mock transactions as needed
+        ];
+
+        const mockTransactionData = [
+            { month: 'Oct', received: 1, sent: 0 },
+            { month: 'Nov', received: 0, sent: 1 },
+            { month: 'Dec', received: 1, sent: 0 },
+            { month: 'Jan', received: 0, sent: 1 },
+            { month: 'Feb', received: 0, sent: 1 }
+        ];
+
+        setAddressData(mockData);
+        setTransactions(mockTransactions);
+        setTransactionData(mockTransactionData);
+    }, [address]);
+
+    // Helper function to determine currency based on address format
+    const getCurrencyFromAddress = (addr) => {
+        if (addr.startsWith('0x')) return 'ETH';
+        if (addr.startsWith('1') || addr.startsWith('3')) return 'BTC';
+        if (addr.startsWith('L')) return 'LTC';
+        if (addr.startsWith('D')) return 'DOGE';
+        return 'BTC'; // Default fallback
     };
-
-    const transactionData = [
-        { month: 'Oct', received: 1, sent: 0 },
-        { month: 'Nov', received: 0, sent: 1 },
-        { month: 'Feb', received: 1, sent: 0 },
-        { month: 'Apr', received: 0, sent: 1 },
-        { month: 'Oct', received: 0, sent: 1 }
-    ];
-
-    const transactions = [
-        {
-            sender: '0xc7317c...3cbc739a',
-            receiver: '0x1ef75d...f487b02c',
-            amount: '0.00107 ETH',
-            usdValue: '≈ $2.31 USD',
-            time: '10:45am 09/10/2024'
-        },
-        {
-            sender: '0xc7317c...3cbc739a',
-            receiver: '0x0c45dd...599afb8',
-            amount: '0 ETH',
-            usdValue: '≈ $0 USD',
-            time: '10:02am 20/04/2023'
-        },
-        {
-            sender: '0xc7317c...3cbc739a',
-            receiver: '0x0c45dd...599afb8',
-            amount: '0 ETH',
-            usdValue: '≈ $0 USD',
-            time: '07:46am 06/02/2023'
-        },
-        {
-            sender: '0xc7317c...3cbc739a',
-            receiver: '0xb0606f...d84445cd',
-            amount: '0.0001 ETH',
-            usdValue: '≈ $0.23 USD',
-            time: '03:24pm 02/11/2022'
-        },
-        {
-            sender: '0xc7317c...3cbc739a',
-            receiver: '0x0c45dd...599afb8',
-            amount: '0 ETH',
-            usdValue: '≈ $0 USD',
-            time: '09:39am 09/10/2022'
-        }
-    ];
 
     return (
         <div className="dashboard-container">
@@ -82,28 +96,28 @@ const AddressDetail = ({ theme }) => {
                     <div className="stat-header">
                         <h2>Balance <span className="eye-icon">👁</span></h2>
                         <div className="balance-value">
-                            0.00001 <span className="currency">BTC</span>
+                            {addressData.balance} <span className="currency">{addressData.currency}</span>
                         </div>
                         <div className="balance-change">
-                            -1.2%
+                            {addressData.changePercentage}%
                         </div>
                     </div>
                 </div>
 
                 <div className="stat-card">
                     <div className="stat-header">
-                        <h2>Address <span className="currency-label">Bitcoin</span></h2>
+                        <h2>Address <span className="currency-label">{addressData.currency}</span></h2>
                         <div className="address-value">
-                            0xc7317c5c4291e51e500d907ead70b713dc739a <span className="copy-icon">📄</span>
+                            {address} <span className="copy-icon" onClick={() => navigator.clipboard.writeText(address)}>📄</span>
                         </div>
                         <div className="address-dates">
                             <div>
                                 <span className="date-label">First Active:</span>
-                                <span className="date-value">1/1/2025</span>
+                                <span className="date-value">{addressData.firstActive}</span>
                             </div>
                             <div>
                                 <span className="date-label">Last Active:</span>
-                                <span className="date-value">1/3/2025</span>
+                                <span className="date-value">{addressData.lastActive}</span>
                             </div>
                         </div>
                     </div>
@@ -114,28 +128,28 @@ const AddressDetail = ({ theme }) => {
                         <h2>Transaction Volume</h2>
                         <div className="volume-stats">
                             <div className="volume-stat">
-                                <div className="stat-number">3</div>
+                                <div className="stat-number">{addressData.sentCount}</div>
                                 <div className="stat-label">Sent</div>
                             </div>
                             <div className="volume-stat">
-                                <div className="stat-number">2</div>
-                                <div className="stat-label">Receive</div>
+                                <div className="stat-number">{addressData.receivedCount}</div>
+                                <div className="stat-label">Received</div>
                             </div>
                             <div className="volume-stat">
-                                <div className="stat-number">5</div>
+                                <div className="stat-number">{addressData.totalCount}</div>
                                 <div className="stat-label">Total</div>
                             </div>
                         </div>
                         <div className="volume-details">
                             <div className="volume-detail">
                                 <span>Sent</span>
-                                <span>0.0001 BTC</span>
-                                <span>-1.2%</span>
+                                <span>{addressData.sentAmount} {addressData.currency}</span>
+                                <span>{addressData.changePercentage}%</span>
                             </div>
                             <div className="volume-detail">
                                 <span>Received</span>
-                                <span>0.0004 BTC</span>
-                                <span>-1.5%</span>
+                                <span>{addressData.receivedAmount} {addressData.currency}</span>
+                                <span>{addressData.changePercentage}%</span>
                             </div>
                         </div>
                     </div>
@@ -148,77 +162,11 @@ const AddressDetail = ({ theme }) => {
                     <BarChart data={transactionData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                         <XAxis dataKey="month" stroke={theme === 'dark' ? '#fff' : '#000'} />
                         <YAxis stroke={theme === 'dark' ? '#fff' : '#000'} />
-                        <Tooltip
-                            content={<CustomTooltip />}
-                            cursor={{ fill: 'rgba(255, 255, 255, 0.1)' }}
-                        />
+                        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255, 255, 255, 0.1)' }} />
                         <Bar dataKey="received" fill="#2ecc71" />
                         <Bar dataKey="sent" fill="#e74c3c" />
                     </BarChart>
                 </ResponsiveContainer>
-            </div>
-
-            
-
-            <div className="interactions-section">
-                <h2>Top Interactions</h2>
-                <div className="interactions-grid">
-                    <div className="sender-section">
-                        <div className="interaction-header">
-                            <span>Sender</span>
-                            <span>Transactions</span>
-                            <span>Percentages</span>
-                        </div>
-                        <div className="interaction-row">
-                            <span>0x37....50f</span>
-                            <span>1</span>
-                            <div className="percentage-container sender">
-                                <div className="percentage-bar" style={{ width: '50%' }}></div>
-                                <span>50%</span>
-                            </div>
-                        </div>
-                        <div className="interaction-row">
-                            <span>0x37....51f</span>
-                            <span>1</span>
-                            <div className="percentage-container sender">
-                                <div className="percentage-bar" style={{ width: '50%' }}></div>
-                                <span>50%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="receiver-section">
-                        <div className="interaction-header">
-                            <span>Receiver</span>
-                            <span>Transactions</span>
-                            <span>Percentages</span>
-                        </div>
-                        <div className="interaction-row">
-                            <span>0x23....78f</span>
-                            <span>1</span>
-                            <div className="percentage-container receiver">
-                                <div className="percentage-bar" style={{ width: '33.3%' }}></div>
-                                <span>33.3%</span>
-                            </div>
-                        </div>
-                        <div className="interaction-row">
-                            <span>0x63....28f</span>
-                            <span>1</span>
-                            <div className="percentage-container receiver">
-                                <div className="percentage-bar" style={{ width: '33.3%' }}></div>
-                                <span>33.3%</span>
-                            </div>
-                        </div>
-                        <div className="interaction-row">
-                            <span>0x22....97f</span>
-                            <span>1</span>
-                            <div className="percentage-container receiver">
-                                <div className="percentage-bar" style={{ width: '33.3%' }}></div>
-                                <span>33.3%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div className="transactions-section">
@@ -229,15 +177,15 @@ const AddressDetail = ({ theme }) => {
                             <div className="tx-addresses">
                                 <div className="address-pair">
                                     <span className="label">From:</span>
-                                    <span className="address_trans">{tx.sender}</span>
+                                    <span className="address_trans">{tx.from}</span>
                                 </div>
                                 <div className="address-pair">
                                     <span className="label">To:</span>
-                                    <span className="address_trans">{tx.receiver}</span>
+                                    <span className="address_trans">{tx.to}</span>
                                 </div>
                             </div>
                             <div className="tx-amount">
-                                <div>{tx.amount}</div>
+                                <div>{tx.amount} {addressData.currency}</div>
                                 <div className="usd-value">{tx.usdValue}</div>
                             </div>
                             <div className="tx-time">{tx.time}</div>
@@ -246,8 +194,7 @@ const AddressDetail = ({ theme }) => {
                 </div>
             </div>
 
-            <TransactionGraph theme={theme} address="0xc7317c5c4291e51e500d907ead70b713dc739a" />
-            
+            <TransactionGraph theme={theme} address={address} />
         </div>
     );
 };
