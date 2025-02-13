@@ -85,7 +85,8 @@
 }
 
 .transaction-hash {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
     color: #2563eb;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -122,6 +123,7 @@
     overflow: hidden;
     white-space: nowrap;
     color: white;
+    cursor: pointer;
 }
 
 .dark .address {
@@ -161,6 +163,12 @@
 .scrollable-container {
     height: 100%;
     overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollable-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* Responsive adjustments */

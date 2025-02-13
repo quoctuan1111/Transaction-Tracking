@@ -156,6 +156,8 @@ const AddressDetail = ({ theme }) => {
                 </div>
             </div>
 
+            <TransactionGraph theme={theme} address={address} />
+
             <div className="transaction-chart">
                 <h2>Transaction Count</h2>
                 <ResponsiveContainer width="100%" height={300}>
@@ -194,7 +196,7 @@ const AddressDetail = ({ theme }) => {
                 </div>
             </div>
 
-            <TransactionGraph theme={theme} address={address} />
+            
         </div>
     );
 };
