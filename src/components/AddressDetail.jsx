@@ -119,8 +119,18 @@ const AddressDetail = ({ theme }) => {
                         <XAxis dataKey="month" stroke={theme === 'dark' ? '#fff' : '#000'} />
                         <YAxis stroke={theme === 'dark' ? '#fff' : '#000'} />
                         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255, 255, 255, 0.1)' }} />
-                        <Bar dataKey="received" fill="#2ecc71" />
-                        <Bar dataKey="sent" fill="#e74c3c" />
+                        <Bar 
+                            dataKey="received" 
+                            name={`Received (${addressData.receivedAmount} ${addressData.currency})`}
+                            fill="#2ecc71"
+                            label={{ position: 'top' }}
+                        />
+                        <Bar
+                            dataKey="sent"
+                            name={`Sent (${addressData.sentAmount} ${addressData.currency})`}
+                            fill="#e74c3c" 
+                            label={{ position: 'top' }}
+                        />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
