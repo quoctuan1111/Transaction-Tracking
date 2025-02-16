@@ -19,7 +19,7 @@ const generateAddress = (type = 'ETH') => {
 
 const generateHash = () => {
     const chars = '0123456789abcdef';
-    return '000000000000000' + Array.from({length: 64}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+    return '0000' + Array.from({length: 64}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 };
 
 const generateTimestamp = (hoursAgo = 0) => {
