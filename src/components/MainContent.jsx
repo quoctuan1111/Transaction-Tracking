@@ -49,7 +49,7 @@ const MainContent = ({ theme }) => {
     return (
         <div className="main-container">
             <div className="search-section">
-                <h1>Real-time Tracking with ABCXYZ</h1>
+                <h1>Real-time Tracking with CryptoMetrics</h1>
                 <EnhancedSearch
                     theme={theme}
                     isOpen={isOpen}
