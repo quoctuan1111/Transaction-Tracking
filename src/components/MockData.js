@@ -1,4 +1,3 @@
-// mockDataService.js
 
 // Helper functions for generating mock data
 const generateAddress = (type = 'ETH') => {
