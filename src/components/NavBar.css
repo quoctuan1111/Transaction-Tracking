@@ -66,6 +66,7 @@
     border-radius: 50px;
     width: 300px;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .dark .search-box {
@@ -99,12 +100,29 @@
     cursor: pointer;
 }
 
-/* Add padding to the body/main content to prevent it from being hidden under the navbar */
+
+.navbar-error-message {
+    position: absolute;
+    top: 100%;
+    right: 2%;
+    margin-top: 5px;
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-radius: 4px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    z-index: 2000;
+    max-width: 300px;
+}
+
+
 main, .dashboard-container, .main-container {
     padding-top: 70px !important;
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .search-box {
         width: 250px;
@@ -150,7 +168,6 @@ main, .dashboard-container, .main-container {
     }
 }
 
-/* For very small screens */
 @media (max-width: 360px) {
     .search-box {
         width: 120px;
